@@ -59,8 +59,8 @@ const SIDEBAR: CSSProperties & Record<`--${string}`, string> = {
   // Declared here, on the shared ancestor, because the panel sizes itself against
   // it from a sibling subtree of the header: a custom property inherits downward
   // only, so declaring it on the header meant the read always took its fallback
-  // and the two could drift apart silently. `h-14` on the header below is the
-  // same height; change both together.
+  // and the two could drift apart silently. The header below reads this same
+  // value for its own height, so there is one number.
   "--wb-header": "3.5rem",
 }
 
@@ -230,7 +230,7 @@ function Header({
   const { toggleSidebar, open, openMobile, isMobile } = useSidebar()
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-2 border-b bg-background px-3 sm:px-4">
+    <header className="sticky top-0 z-20 flex h-(--wb-header) shrink-0 items-center gap-2 border-b bg-background px-3 sm:px-4">
       <Button
         variant="ghost"
         size="icon-sm"

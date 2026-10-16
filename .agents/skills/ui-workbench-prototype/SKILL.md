@@ -1,6 +1,6 @@
 ---
 name: ui-workbench-prototype
-description: Prototype a component or a page in the UI workbench, then write it for real. Use when the user wants to try a design, explore a layout, or build something before committing to it.
+description: Prototype a component or a route screen in the UI workbench, then write it for real. Use when the user wants to try a design, explore a layout, or build something before committing to it.
 ---
 
 A prototype is **throwaway code that answers a question**. The question decides
@@ -67,8 +67,13 @@ write one line at the top of the file saying which route it stands in for, and t
 you assumed it. If no reference or existing route suggests what the screen is, say what you
 picked and why before building it.
 
-A route screen cannot import from the app's own routes. Those bring a shell and a session
-fetch the workbench has no business making. Build its layout from shared components.
+A route screen cannot import from the app's own routes. Those bring a shell and a
+session fetch the workbench has no business making. Build its layout from shared
+components.
+
+A route screen fills the frame, which is one viewport less the workbench's header,
+not the window. Say `min-h-0` or `h-full`, not `min-h-svh`, which is one header
+taller than the space it gets.
 
 ### 4. Build variants, only when the question is open
 

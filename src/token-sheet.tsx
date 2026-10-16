@@ -1390,8 +1390,9 @@ export function UsedByPanel({
     // the viewport, and the document became the scrollport -- which left the
     // header's `sticky top-0` and the panel's `sticky bottom-0` both resolving
     // against the window, so the scrollbar ran the full height of the page and
-    // read as though it sat over the header.
-    <div className="flex h-[calc(100svh-var(--wb-header,3.5rem))] flex-col">
+    // read as though it sat over the header. No fallback on the property: it is
+    // declared on the shared ancestor in `workbench.tsx`, so it is always set.
+    <div className="flex h-[calc(100svh-var(--wb-header))] flex-col">
       <div
         className={`min-h-0 flex-1 overflow-y-auto overscroll-contain ${
           padded ? "p-4 sm:p-6" : ""
